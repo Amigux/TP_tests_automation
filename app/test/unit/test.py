@@ -1,5 +1,6 @@
 import unittest
 import json
+import HTMLTestRunner
 
 from application.application import Application
 from machine.machine import Machine
@@ -40,6 +41,11 @@ class TestMachines(unittest.TestCase):
                 exit()
         self.assertEqual(contenu_fichier,{"donnees":"mes donnees à écrire"})
 
-    
-if __name__ == '__main__':
-	unittest.main()
+
+test1 = unittest.TestLoader().loadTestsFromTestCase(TestApplication)
+suite = unittest.TestSuite([test1])
+runner = HtmlTestRunner.HTMLTestRunner(verbosity=2, output='report', report_name='report')
+runner.run(suite)
+
+if __name__ == "__main__":
+    unittest.main()

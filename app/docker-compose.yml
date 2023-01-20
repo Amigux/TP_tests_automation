@@ -1,0 +1,17 @@
+version: '3'
+services:
+  quality-code:
+    build: .
+    volumes:
+      - type: bind
+        source: /home/amine/Documents/Testing/TP_automatisation/python-api-handle-it/app/
+        target: /app
+
+  unittest:
+    build: test/unit
+    volumes:
+      - type: bind
+        source: /home/amine/Documents/Testing/TP_automatisation/python-api-handle-it/app/
+        target: /app
+    stdin_open: true
+    tty: true
